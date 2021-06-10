@@ -1,8 +1,8 @@
 # Lesson 2
-## Exercise Endpoints for Application Status
+## Exercise Endpoints for Application Status and Logging
 
 ```bash
-
+cd python-helloworld
 #DEV
 docker build --target dev  -t cff-endpoints:dev .
 #PROD
@@ -17,5 +17,22 @@ docker run --name flask-endpoints-prod -i -t -p 5000:5000 --restart always cff-e
 
 ```
 
+# Lesson 3
+## 
+```bash
+cd go-helloworld
 
-format='%(asctime)s, %(message)s endpoint was reached.', datefmt="%m/%d/%Y %I:%M:%S %p %Z")
+#Build
+docker build -t turnes/go-helloworld
+
+#Tag
+docker tag turnes/go-helloworld turnes/go-helloworld:0.1.0
+
+#Push
+docker login
+docker push turnes/go-helloworld:0.1.0
+
+#RUN
+docker run --rm --name helloworld -i -t -p 6111:6111 turnes/go-helloworld:0.1.0
+
+```
